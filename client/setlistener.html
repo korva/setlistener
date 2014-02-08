@@ -1,0 +1,85 @@
+
+
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+  <title>Setlistener</title>
+</head>
+
+<body>
+  <div id="main-container" class="container">
+    <div id="header" class="page-header">
+    <h1>Setlistener</h1>
+    <h4>Turn your text setlist into a Spotify playlist</h4>
+    </div>
+    <div id="container" class="row">
+      <div id="setlist-column" class="col-md-4">
+        <h5>1. Paste your setlist here
+        {{> fetch}}</h5>
+        {{> setlist}}
+      </div>
+      <div id="playlist-column" class="col-md-4">
+        <h5>2. Review the results.
+        {{#if search_populated}}
+          {{> generate}}
+        {{/if}}
+        </h5>
+        {{> playlist}}
+    
+      </div>
+      <div id="link-column" class="col-md-4">
+        <h5>3. Get your playlist:</h5>
+        {{> link}} 
+      </div>
+    </div>
+    <div id="footer">
+      Made by <a href="https://twitter.com/jkoskenkorva">@jkoskenkorva</a> using
+      <a href="https://www.meteor.com/">Meteor,</a>
+      <a href="https://github.com/liesen/spotify-api-server">spotify-api-server,</a>
+      <a href="https://developer.spotify.com/technologies/web-api/">Spotify Metadata API,</a>
+      <a href="http://getbootstrap.com/">Bootstrap3</a> and  
+      <a href="http://subtlepatterns.com/stardust/">Stardust</a>.
+    </div>
+  </div>
+</body>
+
+<template name="setlist">
+  <textarea id="input-textarea" rows="20">{{inputtext}}</textarea><br>
+  
+</template>
+
+<template name="fetch">
+  <button id="fetch-button" type="button" class="btn btn-primary">Search from Spotify ></button>
+</template>
+
+<template name="generate">
+  <button id="generate-button" type="button" class="btn btn-success">Save playlist ></button>
+</template>
+
+<template name="playlist">
+  {{#if search_populated}}
+  <div id="setlist-container">
+    <input id="name-input" type="text" class="form-control" placeholder="Give the playlist a name (optional)">
+    {{#each songs}}
+      <div class="setlist-line">
+        <a target="_blank" href="{{player_link}}">{{artist}}: {{title}}</a>
+      </div>
+    {{/each}}   
+  </div>
+  {{/if}}
+</template>
+
+<template name="link">
+{{#if playlist_created}}
+  <div id="link-container">
+      {{playlist_name}}:<br><br>
+      {{web_link}}<br><br>
+      <a target="_blank" href="{{web_link}}" class="btn btn-default active" role="button">Open in browser</a>
+      <a target="_blank" href="{{app_link}}" class="btn btn-default active" role="button">Open in Spotify app</a>
+  </div>
+{{/if}}
+{{#if playlist_creation_failed}}
+  <div id="link-container">
+    Something went wrong! Could not create a playlist - sorry :(
+  </div>
+{{/if}}
+</template>

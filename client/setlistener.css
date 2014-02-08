@@ -1,0 +1,69 @@
+body {
+  background-image: url('/stardust.png');
+  color: white;
+  font-size: 1.5em;
+  
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Arvo', serif;
+}
+
+#header {
+  color: #7AB800;
+}
+
+#footer {
+  font-family: 'Arvo', serif;
+  font-size: 12px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+#fetch-button {
+  float: right;
+}
+
+#generate-button {
+  float: right;
+}
+
+#input-textarea {
+  width: 100%;
+  margin-top: 16px;
+  color: #232323;
+  padding-left: 6px;
+}
+
+#setlist-container {
+  background-color:rgba(255,255,255,0.1);
+  margin-top: 36px;
+  padding: 10px;
+  width: auto;
+  
+}
+
+#name-input {
+  margin-bottom: 10px;
+}
+
+#link-container {
+  background-color:rgba(255,255,255,0.1);
+  margin-top: 36px;
+  margin-right: 20px;
+  padding: 10px;
+  width: auto;
+  word-wrap: break-word;
+  
+}
+
+#setlist-container a {
+  color: #7AB800;
+}
+
+[class*="col-"]{
+      margin-bottom: 20px;
+  }
+
+
+
